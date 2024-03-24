@@ -37,7 +37,7 @@ Follow these steps to build and run the project:
 5. **Run the Docker Container:**
 
    ```bash
-   docker run -d -p 8080:8080 spring-petclinic:1.0
+   docker run -itd -p 8080:8080 spring-petclinic:1.0
 
 6. **Access the Application:**
 Open a web browser and navigate to http://localhost:8080 to access the Spring PetClinic application.
@@ -75,4 +75,18 @@ Please refer to JFrog documentation to setup Docker artifactory: https://jfrog.c
    ```bash
    docker push saimeduri.jfrog.io/docker-trial/spring-petclinic:1.0
 
+## Commands to pull existing image and run the container from JFrog artifactory
 
+1. **Docker image pull from JFrog artifactory:**
+
+   ```bash
+   docker pull saimeduri.jfrog.io/docker-trial/spring-petclinic:2.0
+
+2. **Running the container:**
+
+   ```bash
+   docker run -itd -p 8080:8080 saimeduri.jfrog.io/docker-trial/spring-petclinic:2.0
+
+3. **Access the Application:**
+
+Open a web browser and navigate to http://localhost:8080 to access the application.
