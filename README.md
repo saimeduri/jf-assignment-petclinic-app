@@ -82,11 +82,16 @@ Please refer to JFrog documentation to setup Docker artifactory: https://jfrog.c
    ```bash
    docker pull saimeduri.jfrog.io/docker-trial/spring-petclinic:2.0
 
-2. **Running the container:**
+2. **Load the Docker image from the shared tarball**
+
+   ```bash
+   docker load -i spring-petclinic.tar
+
+3. **Running the container:**
 
    ```bash
    docker run -itd -p 8080:8080 saimeduri.jfrog.io/docker-trial/spring-petclinic:2.0
 
-3. **Access the Application:**
+4. **Access the Application:**
 
 Open a web browser and navigate to http://localhost:8080 to access the application.
