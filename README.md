@@ -17,7 +17,7 @@ Follow these steps to build and run the project:
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/spring-petclinic.git
+   git clone https://github.com/saimeduri/jf-assignment-petclinic-app.git
 
 2. **Navigate to the Project Directory:**
    
@@ -35,7 +35,7 @@ Follow these steps to build and run the project:
    docker build -t spring-petclinic:1.0 .
 
 5. **Run the Docker Container:**
-   
+
    ```bash
    docker run -d -p 8080:8080 spring-petclinic:1.0
 
@@ -56,3 +56,23 @@ To run the Jenkins pipeline:
 - Create a new Jenkins pipeline job and point it to this repository.
 - Configure the Jenkins job to use the Jenkinsfile provided in this repository.
 - Run the Jenkins job to execute the pipeline stages.
+
+## Commands to push the Docker Image to JFrog artifactory
+
+1. **Tag the previously built Docker Image with JFrog artifactory naming convention:**
+
+   ```bash
+   docker tag spring-petclinic:1.0 saimeduri.jfrog.io/docker-trial/spring-petclinic:1.0
+
+2. **Docker login to JFrog artifactory:**
+Please refer to JFrog documentation to setup Docker artifactory: https://jfrog.com/help/r/jfrog-artifactory-documentation/set-up-a-docker-repository
+
+   ```bash
+   docker login -u ${ARTIFACTORY_USERNAME} -p ${ARTIFACTORY_PASSWORD} ${JFROG_URL}
+
+3. **Image push to JFrog artifactory:**
+
+   ```bash
+   docker push saimeduri.jfrog.io/docker-trial/spring-petclinic:1.0
+
+
