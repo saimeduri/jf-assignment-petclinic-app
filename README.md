@@ -17,7 +17,7 @@ Follow these steps to build and run the project:
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/spring-petclinic.git
+   git clone https://github.com/saimeduri/jf-assignment-petclinic-app.git
 
 2. **Navigate to the Project Directory:**
    
@@ -35,9 +35,9 @@ Follow these steps to build and run the project:
    docker build -t spring-petclinic:1.0 .
 
 5. **Run the Docker Container:**
-   
+
    ```bash
-   docker run -d -p 8080:8080 spring-petclinic:1.0
+   docker run -itd -p 8080:8080 spring-petclinic:1.0
 
 6. **Access the Application:**
 Open a web browser and navigate to http://localhost:8080 to access the Spring PetClinic application.
@@ -56,3 +56,37 @@ To run the Jenkins pipeline:
 - Create a new Jenkins pipeline job and point it to this repository.
 - Configure the Jenkins job to use the Jenkinsfile provided in this repository.
 - Run the Jenkins job to execute the pipeline stages.
+
+## Commands to push the Docker Image to JFrog artifactory
+
+1. **Tag the previously built Docker Image with JFrog artifactory naming convention:**
+
+   ```bash
+   docker tag spring-petclinic:1.0 saimeduri.jfrog.io/docker-trial/spring-petclinic:1.0
+
+2. **Docker login to JFrog artifactory:**
+Please refer to JFrog documentation to setup Docker artifactory: https://jfrog.com/help/r/jfrog-artifactory-documentation/set-up-a-docker-repository
+
+   ```bash
+   docker login -u ${ARTIFACTORY_USERNAME} -p ${ARTIFACTORY_PASSWORD} ${JFROG_URL}
+
+3. **Image push to JFrog artifactory:**
+
+   ```bash
+   docker push saimeduri.jfrog.io/docker-trial/spring-petclinic:1.0
+
+## Commands to pull existing image and run the container from JFrog artifactory
+
+1. **Docker image pull from JFrog artifactory:**
+
+   ```bash
+   docker pull saimeduri.jfrog.io/docker-trial/spring-petclinic:2.0
+
+2. **Running the container:**
+
+   ```bash
+   docker run -itd -p 8080:8080 saimeduri.jfrog.io/docker-trial/spring-petclinic:2.0
+
+3. **Access the Application:**
+
+Open a web browser and navigate to http://localhost:8080 to access the application.
